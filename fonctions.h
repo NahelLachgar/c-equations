@@ -2,7 +2,7 @@
 #define __LSC__
 
 typedef struct Element {
-    char character;
+    char data;
     struct Element* suivant;
 } Element;
 
@@ -18,14 +18,20 @@ typedef struct Noeud
 } Noeud;
 
 
-void empiler(Pile *pile, char character);
+void empiler(Pile *pile, char data);
 
 char depiler(Pile *pile);
 
-void afficherPile(Pile *pile);
+int priorite(char char1, char char2);
 
-Element afficherSommetPile(Pile *pile);
+int brancheLibre(Noeud *tree);
 
-int est_vide(Pile *pile);
 
+void ajouterNoeud(Noeud **arbre, char value);
+
+Noeud *genererArbre(Pile *pile);
+
+void afficherArbre(Noeud *arbre);
+
+int parcoursArbre(Noeud *arbre);
 #endif
