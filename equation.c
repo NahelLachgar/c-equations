@@ -44,6 +44,7 @@ int main()
     afficherArbre(arbre);
     printf("\n");
     printf("Résultat : %d\n", parcoursArbre(arbre));
+
     return 0;
 }
 

@@ -71,45 +71,32 @@ void ajouterNoeud(Noeud **arbre, char value)
 	new_element = creerNoeud(value);
 	if (*arbre != NULL)
 	{
-		// S'il y a déjà qqchose dans l'arbre
 		tmp_cursor = *arbre;
 		do
 		{
 			pere = tmp_cursor;
-			// On va faire bouger tmp_cursor,
-			// on enregistre donc sa position actuelle
-			// (noeud père du prochain curseur)
 			if (priorite(tmp_cursor->data, value) == -1 && brancheLibre(tmp_cursor->droit))
 			{
-				// Si la nouvelle donnée est prioritaire sur celle du noeud testé
-				// On regarde le noeud à droite
 				tmp_cursor = tmp_cursor->droit;
 				if (tmp_cursor == NULL)
 				{
-					// Si ce noeud est vide
-					// On fait pointer son père sur le nouvel élément
 					pere->droit = new_element;
-					break; // Fin de l'opération
+					break;
 				}
 			}
 			else
 			{
-				// Si la nouvelle donnée est moins prioritaire
-				// On regarde le noeud à gauche
 				tmp_cursor = tmp_cursor->gauche;
 				if (tmp_cursor == NULL)
 				{
-					// Si ce noeud est vide
-					// On fait pointer sur père sur le nouvel élément
 					pere->gauche = new_element;
-					break; // Fin de l'opération
+					break;
 				}
 			}
 		} while (tmp_cursor != NULL);
 	}
 	else
 	{
-		// Si l'arbre est complètement vide
 		*arbre = new_element;
 	}
 }
